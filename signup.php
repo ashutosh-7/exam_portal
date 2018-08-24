@@ -64,6 +64,19 @@ if(isset($_POST['submit']))   //submit button press ho gaya
                     $year=$_POST['year'];
                     $section=$_POST['section'];
 
+  $query1="SELECT * FROM student_details WHERE student_id='$student_id' ";
+                    $query_run1=mysqli_query($conn,$query1);
+                    $result1=mysqli_num_rows($query_run1);
+
+
+
+                    if($result1>0)
+                    {
+                       echo "<h1>This Student already registered!</h1>";
+                    }
+
+                    else
+                    {
 
 
              
@@ -82,7 +95,7 @@ if(isset($_POST['submit']))   //submit button press ho gaya
 
          }
         
-
+}
                 }
 
 ?>
