@@ -1,6 +1,6 @@
 <?php
 require 'configure.php';
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,12 +21,13 @@ session_start();
 
 	<div class="form">
 		<form action="signup.php" method="POST">
-		<input type="text" name="student_name" placeholder="Name">
-		<input type="text" name="email" placeholder="E-mail">
-		<input type="text" name="branch" placeholder="branch">
-		<input type="text" name="year" placeholder="year">
-		<input type="text" name="mobile" placeholder="mobile">
-		<input type="text" name="section" placeholder="section">
+		<input type="text" name="student_name" placeholder="Name" required="required">
+		<input type="text" name="student_id" placeholder="Student ID" required="required">
+		<input type="text" name="email" placeholder="E-mail" required="required">
+		<input type="text" name="branch" placeholder="branch" required="required">
+		<input type="text" name="year" placeholder="year" required="required">
+		<input type="text" name="mobile" placeholder="mobile" required="required">
+		<input type="text" name="section" placeholder="section" required="required">
 		 
 				<select class="gender" name="gender" required="required">
 					<option value="gender">gender</option>
@@ -36,7 +37,7 @@ session_start();
                     <option value="Female">Female</option>
                     <option value="Male">Other</option>
 				</select>
-  <button class="button" name="button">REGISTER</button>
+  <button type="submit" class="button" name="submit">REGISTER</button>
 		
 </form>
 	</div>
@@ -45,3 +46,47 @@ session_start();
 
 </body>
 </html>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+if(isset($_POST['submit']))   //submit button press ho gaya
+{
+
+                    $student_name=$_POST['student_name'];
+                     $student_id=$_POST['student_id'];
+                           
+                    
+                   $email=$_POST['email'];
+                    $mobile=$_POST['mobile'];
+                    $gender=$_POST['gender'];
+                    $branch=$_POST['branch'];
+                    $year=$_POST['year'];
+                    $section=$_POST['section'];
+
+
+
+             
+
+                    	$query="INSERT INTO student_details (student_name,student_id,email,mobile,branch,year,section,gender) 
+         VALUES ('$student_name','$student_id','$email','$mobile','$branch','$year','$section','$gender')";
+         $query_run=mysqli_query($conn,$query);
+           if ($query_run) 
+         {
+                       
+                        header('location:registersuccess.php');
+         }
+         else
+         {
+         	echo "Error!";
+
+         }
+        
+
+                }
+
+?>
+
+
+
+

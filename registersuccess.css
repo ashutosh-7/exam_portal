@@ -1,0 +1,28 @@
+body{
+    
+
+    background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(images/pic4.jpg);
+    background-repeat: no-repeat;
+    background-position:center; ;
+    height: 1200px;
+    width: 1500px;
+    margin: 0px;
+   background-size: cover;
+
+
+}
+h1{
+	font-family: cursive;
+	font-size: 40px;
+	margin-top: 150px;
+	margin-left: 400px;
+	color:  #29a3a3;
+}
+
+        a{
+        	font-family: cursive;
+        	text-decoration: none;
+        	font-size: 30px;
+        	color:#99ff33;
+
+        }
