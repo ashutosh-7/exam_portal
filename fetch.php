@@ -67,7 +67,7 @@ else if($k!=1){
 	{
 		echo"<p class=msg>Ip has been registered</p>";
       
-  //header('Location:response.php');
+ header('Location:response.php');
   }
 else 
 	echo mysqli_error($conn);
