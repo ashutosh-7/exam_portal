@@ -1,6 +1,13 @@
 <?php
 require 'configure.php';
 session_start();
+$Ip=$_SERVER['REMOTE_ADDR'];
+$Ip2="10.10.10.201";
+if($Ip!=$Ip2)
+{
+	header('location:error.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +85,15 @@ session_start();
 
 <?php
 $k=0;$x=0;
+
+
+
+$Ip=$_SERVER['REMOTE_ADDR'];
+$Ip2="10.10.10.201";
+if($Ip==$Ip2)
+{
+
+
 if(isset($_POST['student_id']))
 {
 
@@ -177,7 +193,11 @@ while($query_row=mysqli_fetch_assoc($result))
 
 
 }
-
+}
+else
+{
+	echo "<h1>YOU ARE NOT A ADMIN!</h1>";
+}
 
 
 
