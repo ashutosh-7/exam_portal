@@ -14,7 +14,7 @@ session_start();
 		background: wheat;
 	}
 	.msg{
-	color:#cccccc;
+	color:black;
 	font-family: cursive;
 	font-size: 35px;
 }
@@ -156,9 +156,14 @@ while($query_row=mysqli_fetch_assoc($result))
    $n=mysqli_num_rows($result);
     if($n==0)
     	{
-    		$query="INSERT INTO allocation (computer_system, student_id) VALUES ('$alloc', '$student_id')"; 
+    		$query1="SELECT ip_address FROM fetch_ip WHERE computer_system='$alloc'";
+    		 $result1=mysqli_query($conn,$query1);
+    		$sql=mysqli_fetch_assoc($result1);
+    		$result3=$sql['ip_address'];
+    		$query="INSERT INTO allocation (computer_system, student_id,ip_address) VALUES ('$alloc', '$student_id','$result3')"; 
+    		
     if(mysqli_query($conn,$query))
-    	echo "Student Allocated ".$alloc."System Number";
+    	echo "<p class=msg>Student Allocated <p>".$alloc."<p class=msg>System Number<p>";
 }
     else 
     	$alloc=7;

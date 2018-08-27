@@ -27,7 +27,7 @@ border: 2px;
 <body>
      <div id="click">
      
-     <a href="#"><h1 >Click Here To START EXAM!</h1></a>
+     <a href="exam_home.php"><h1 >Click Here To START EXAM!</h1></a>
 
 </body>
 </html>

@@ -52,7 +52,7 @@ echo "<p class=msg>Computer has been already registered</p>";
 break;
 }
 }
-if($num>6&&$k!=1)
+if($computer_system>6&&$k!=1)
 {
 echo" <p class=msg>No Computer System Is Free for Exam!</p> ";
 }
