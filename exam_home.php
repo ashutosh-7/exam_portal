@@ -60,7 +60,7 @@ $e=$query_row['email'];
 	margin: auto;
 	z-index: 1;
 	text-align: center;
-	max-width: 600px;
+	max-width: 1000px;
 	padding-top: 50px;
 	padding-left: 30px;
 	padding-right: 30px;
