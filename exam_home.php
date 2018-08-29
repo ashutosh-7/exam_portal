@@ -84,6 +84,9 @@ $e=$query_row['email'];
 		tr,td{
 			color: red;
 		}
+		a{
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -115,7 +118,8 @@ $e=$query_row['email'];
 					<td><?php echo $s; ?></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button class="button" name="button">Start Exam!</button></td>
+					<td colspan="2"><button  type="submit" class="button" name="button"><a href="instructions.php"> Next
+					</a></button></td>
 				</tr>
 			</tr>
 		</table>
@@ -125,3 +129,6 @@ $e=$query_row['email'];
 
 </body>
 </html>
+<? php
+
+

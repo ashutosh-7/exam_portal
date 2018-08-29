@@ -120,7 +120,7 @@ $k++;
 
 $query="SELECT * FROM allocation";
 $l=0;
-	$result=mysqli_query($conn,$query);
+1w	$result=mysqli_query($conn,$query);
 while($query_row=mysqli_fetch_assoc($result))
 {
 	$present=$query_row['student_id'];
