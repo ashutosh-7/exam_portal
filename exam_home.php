@@ -129,6 +129,6 @@ $e=$query_row['email'];
 
 </body>
 </html>
-<? php
+
 
 

@@ -1,6 +1,9 @@
 <?php
 require 'configure.php';
+
+ob_start();
 session_start();
+
 
 
 
@@ -98,7 +101,10 @@ button:hover {
 		margin-top: 31vw;
 	margin-left: 35vw;
 
-	}		</style>
+	}	
+	.table1{
+		width: 23%;
+	}	</style>
 
 
 </head>
@@ -139,26 +145,42 @@ var x = setInterval(function() {
 		
 			<!--<div id="demo"></div>-->
 			<div>
-			<table border="1" style="float: left">
-				<tr><td><button>1</button></td>
-                 <td><button>2</button></td>
-                 <td><button>3</button></td>
+			<table border="1" style="float: left" class="table1">
+				<tr><td>		<form action="questions.php" method="POST">
+<button type="submit" name="que1">1</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que2">2</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que3">3</button></form></td>
 				</tr>
-				<tr><td><button>4</button></td>
-                 <td><button>5</button></td>
-                 <td><button>6</button></td>
+				<tr><td><form action="questions.php" method="POST">
+<button type="submit" name="que4">4</button></form></td>
+				
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que5">5</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que6">6</button></form></td>
 				</tr>
-				<tr><td><button>7</button></td>
-                 <td><button>8</button></td>
-                 <td><button>9</button></td>
+				<tr><td><form action="questions.php" method="POST">
+<button type="submit" name="que7">7</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que8">8</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que9">9</button></form></td>
 				</tr>
-				<tr><td><button>10</button></td>
-                 <td><button>11</button></td>
-                 <td><button>12</button></td>
+				<tr><td><form action="questions.php" method="POST">
+<button type="submit" name="que10">10</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que11">11</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que12">12</button></form></td>
 				</tr>
-				<tr><td><button>13</button></td>
-                 <td><button>14</button></td>
-                 <td><button>15</button></td>
+				<tr><td><form action="questions.php" method="POST">
+<button type="submit" name="que13">13</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que14">14</button></form></td>
+                 <td><form action="questions.php" method="POST">
+<button type="submit" name="que15">15</button></form></td>
 				</tr>
 			</table>
 			</div>
@@ -235,6 +257,83 @@ if(isset($_SESSION['q']))
 $x=$_SESSION['q']-1;
 $_SESSION['q']=$x;
 header('Location:questions.php');}
+if(isset($_POST['que1'])) 
+{
+	$_SESSION['q']=1;
+	header('Location:questions.php');}
+	if(isset($_POST['que2'])) 
+{
+	$_SESSION['q']=2;
+	header('Location:questions.php');}
+
+if(isset($_POST['que3'])) 
+{
+	$_SESSION['q']=3;
+	header('Location:questions.php');}
+
+if(isset($_POST['que4'])) 
+{
+	$_SESSION['q']=4;
+	header('Location:questions.php');}
+	if(isset($_POST['que5'])) 
+{
+	$_SESSION['q']=5;
+	header('Location:questions.php');}
+	if(isset($_POST['que6'])) 
+{
+	$_SESSION['q']=6;
+	header('Location:questions.php');}
+	if(isset($_POST['que7'])) 
+{
+	$_SESSION['q']=7;
+	header('Location:questions.php');}
+	if(isset($_POST['que8'])) 
+{
+	$_SESSION['q']=8;
+	header('Location:questions.php');}
+	if(isset($_POST['que9'])) 
+{
+	$_SESSION['q']=9;
+	header('Location:questions.php');}
+	if(isset($_POST['que10'])) 
+{
+	$_SESSION['q']=10;
+	header('Location:questions.php');}
+	if(isset($_POST['que11'])) 
+{
+	$_SESSION['q']=11;
+	header('Location:questions.php');}
+	if(isset($_POST['que12'])) 
+{
+	$_SESSION['q']=12;
+	header('Location:questions.php');}
+	if(isset($_POST['que13'])) 
+{
+	$_SESSION['q']=13;
+	header('Location:questions.php');}
+	if(isset($_POST['que14'])) 
+{
+	$_SESSION['q']=14;
+	header('Location:questions.php');}
+	if(isset($_POST['que15'])) 
+{
+	$_SESSION['q']=15;
+	header('Location:questions.php');}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //submit button press ho gaya
+
 
 
 

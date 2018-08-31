@@ -199,29 +199,6 @@ else
 	echo "<h1>YOU ARE NOT A ADMIN!</h1>";
 }
 
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 
