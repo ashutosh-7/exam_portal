@@ -1,7 +1,22 @@
 <?php
 require 'configure.php';
 session_start();
-$_SESSION["favcolor"] = "green";
+
+
+
+if(isset($_SESSION['q']))
+{
+	$q=$_SESSION['q'];
+	
+if($q<=0)
+{
+	$q=1;
+	$_SESSION['q']=1;
+}
+}
+else{
+	echo "seesion expire";
+}
 
 
 
@@ -22,8 +37,8 @@ $_SESSION["favcolor"] = "green";
 					margin-left: 30vw;
 				}
 				table,tr,td{
-					margin-top: 50px;
-					margin-left: 80px;
+					margin-top: 40px;
+					margin-left: 30px;
 					font-size: 20px;
 					padding: 8px;
 					border-radius: 15px;
@@ -55,17 +70,42 @@ button:hover {
 	margin-left: 80vw;
 }
 .table2{
-	margin-right: 400px;
 	float: right;
+	display: inline-block;;
+	table-layout: fixed;
+	 width: 64%;
+	 margin-right: 4%;
 }
-			</style>
+
+.mna{
+	margin-top: 31vw;
+	margin-left: 35vw;
+
+}
+#next{
+	margin-top: 4vw;
+	margin-left: 15vw;
+
+}
+	#previous{
+			margin-top: 4vw;
+	margin-left: 8vw;
+
+
+
+	}
+	.buttons{
+		margin-top: 31vw;
+	margin-left: 35vw;
+
+	}		</style>
 
 
 </head>
 <body>
 	<script>
 
-var countDownDate = new Date("Aug 30,2018 18:59:10").getTime();
+var countDownDate = new Date("Aug 31,2018 22:56:10").getTime();
 
 
 var x = setInterval(function() {
@@ -87,15 +127,17 @@ var x = setInterval(function() {
     
    
     if (distance <0) {
-        window.location.href="#";
+        window.location.href="error3.php";
         
     }
+   
 }, 1000);
 </script>
 	<div>
 		<h1 id="msg"><u>Open Source Software R&D Centre Exam</u></h1>
+	</div>
 		
-			<div id="demo"></div>
+			<!--<div id="demo"></div>-->
 			<div>
 			<table border="1" style="float: left">
 				<tr><td><button>1</button></td>
@@ -119,18 +161,19 @@ var x = setInterval(function() {
                  <td><button>15</button></td>
 				</tr>
 			</table>
-
+			</div>
+			<div>
+<table border="1" class="table2">
 			
 
 	
 	<?php 
-$q=1;
   $query="SELECT * FROM  questions WHERE qid=$q ";
 $result=mysqli_query($conn,$query);
 $query_row=mysqli_fetch_assoc($result);
 	
 
-	echo"<table border=1 class=table2>";
+	//echo"<table border=1 class=table2>";
 	echo"<tr><td><br><form action =questions.php method =POST>".$query_row['questions'];
 	echo"</tr></td>";
 	echo"<tr><td><input type=radio name =opt value=1 id =d1>".$query_row['option1'];
@@ -148,25 +191,50 @@ $query_row=mysqli_fetch_assoc($result);
     echo"<tr><td><br><input type=submit name=submit value=submit></br>";
     	echo"</tr></td>";
 
-echo"</table>";
+//echo"</table>";
 
 ?>
-</div>
+</table>
 
+
+</div>
+	<div class="buttons">
+
+
+<form class="mna" action="questions.php" method="POST">
+			<input id="previous" type="submit" name="Previous" value="Previous">
+
+	<input id="next"  type="submit" name="Next" value="Next">
+
+</form>
 
 	</div>
-	
 
 </body>
 </html>
-<? php
-if(isset($_SESSION['favcolor']))
+<?php
+if(isset($_POST['Next'])){
+
+	session_start();
+if(isset($_SESSION['q']))
 {
-	header('location:questions.php');
-
+$_SESSION['q']=++$_SESSION['q'];
+if($_SESSION['q']>15)
+$_SESSION['q']=15;
+echo "set";
 }
+else{
+	echo "seesion not set";
+}
+header('Location:questions.php');
+}
+if(isset($_POST['Previous'])){
 
-
+session_start();
+if(isset($_SESSION['q']))
+$x=$_SESSION['q']-1;
+$_SESSION['q']=$x;
+header('Location:questions.php');}
 
 
 

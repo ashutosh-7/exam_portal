@@ -1,10 +1,5 @@
 <?php
 require 'configure.php';
-if(isset($_SESSION['favcolor']))
-{
-	header('location:questions.php');
-
-}
 
 ?>
 

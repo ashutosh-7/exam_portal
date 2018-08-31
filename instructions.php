@@ -1,11 +1,6 @@
 <?php
 require 'configure.php';
-session_start();
-if(isset($_SESSION['favcolor']))
-{
-	header('location:questions.php');
 
-}
 
 
 ?>
@@ -118,10 +113,20 @@ No deduction for wrong answer.<br>
 		
 	</table>
 	</table>
-	<button class="button" name="button"> <a href="questions.php"> Start Exam </a></button>
+	<form action="instructions.php" method="POST"><button class="button" name="button"> <a href="questions.php"> Start Exam </a></button></form>
 
 
 </div>
 
 </body>
 </html>
+<?php
+session_start();
+if(isset($_POST['button'])){
+	
+$_SESSION['q']=1;
+header('Location:questions.php');}
+
+
+
+?>

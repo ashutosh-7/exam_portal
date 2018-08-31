@@ -2,7 +2,7 @@
 require 'configure.php';
 session_start();
 $Ip=$_SERVER['REMOTE_ADDR'];
-$Ip2="10.10.10.113";
+$Ip2="::1";
 if($Ip!=$Ip2)
 {
 	header('location:error.php');
@@ -89,7 +89,7 @@ $k=0;$x=0;
 
 
 $Ip=$_SERVER['REMOTE_ADDR'];
-$Ip2="10.10.10.113";
+$Ip2="::1";
 if($Ip==$Ip2)
 {
 
