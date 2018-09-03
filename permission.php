@@ -76,7 +76,7 @@ $n=$query_row['student_name'];
 
 $m=$query_row['mobile'];
 $b=$query_row['branch'];
-$s=$query_row['section'];
+$sec=$query_row['section'];
 $e=$query_row['email'];
 
 
@@ -90,6 +90,7 @@ $m='';
 $b='';
 $s='';
 $e='';
+$sec='';
 }
 }
 else{
@@ -98,6 +99,8 @@ else{
 
 
 $m='';
+$sec='';
+
 $b='';
 $s='';
 $e='';
@@ -178,7 +181,7 @@ $e='';
 				</tr>
 				<tr>
 					<td><?php  echo "Section"; ?></td>
-					<td><?php echo $s; ?></td>
+					<td><?php echo $sec; ?></td>
 				</tr>
 				<tr><td><form action="permission1.php" method="POST">Permission:  YES<input type="radio" name="permission" value="Yes"></td><td> NO<input type="radio" name="permission" value="NO"></td></tr>
 				<tr><<tr><td></td></tr><br><br>

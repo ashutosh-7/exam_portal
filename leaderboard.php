@@ -11,10 +11,27 @@
 	.heading1{
 		margin-left: 35%;
 	}
+	.home{
+			float: right;
+			font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 12px;
+    border: 2px solid black;
+    font-size: 15px;
+    width: 10%;
+    
+    padding: 8px;
+    cursor: pointer;
+   
+		}
+		a{
+			text-decoration: none;
+		}
 </style>
 </head>
 <body>
 	<div><h1 class="heading1">Ranking Of Students</h1></div>
+
+			<div class="home1"><button class="home"><a class="log" href="adminpanel.php">Admin-Panel</a></button></div>
 
 
 </body>
