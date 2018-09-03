@@ -1,13 +1,16 @@
 <?php
 require 'configure.php';
+session_start();
+if($_SESSION['username'])
+{
 $Ip=$_SERVER['REMOTE_ADDR'];
 if($Ip=="::1"){
-
-	}else{
-			header('Location:error.php');
-
-	}
-
+	echo "";
+}
+}
+else{
+	echo "<h1>login first</h1>";
+}
 
 
 
@@ -18,8 +21,23 @@ if($Ip=="::1"){
 	<title>Fetch</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	.home{
+			float: right;
+			font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 12px;
+    border: 2px solid black;
+    font-size: 15px;
+    width: 10%;
+    
+    padding: 8px;
+    cursor: pointer;
+   
+		}
+		</style>
 </head>
 <body>
+		<div class="home1"><button class="home"><a class="log" href="adminpanel.php">Admin-Panel</a></button></div>
 	<form  class="form" action="permission.php" method="POST" >
 		<input type="text" name="student_id" placeholder="Enter The Student ID:" required="required">
 		<input type="submit" name="submit" value="Search">

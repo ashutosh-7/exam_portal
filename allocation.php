@@ -25,13 +25,25 @@ else{
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
 	body{
-		background: wheat;
+		background:#00997a;
 	}
 	.msg{
 	color:black;
 	font-family: cursive;
 	font-size: 35px;
 }
+.home{
+			float: right;
+			font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 12px;
+    border: 2px solid black;
+    font-size: 15px;
+    width: 10%;
+    
+    padding: 8px;
+    cursor: pointer;
+   
+		}
 
 
 		
@@ -76,6 +88,8 @@ else{
 	</style>
 </head>
 <body>
+			<div class="home1"><button class="home"><a class="log" href="adminpanel.php">Admin-Panel</a></button></div>
+
 	<div class="div1">
 	<form action="allocation.php" method="POST" class="form">
 		<input type="text" name="student_id" placeholder="Student Id"><br>
