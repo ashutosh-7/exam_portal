@@ -2,32 +2,15 @@
 require 'configure.php';
 require 'ip-secure.php';
 //student id
-$Ip=$_SERVER['REMOTE_ADDR'];
-$k=0; 
-$query="SELECT * FROM  allocation ";
-$result=mysqli_query($conn,$query);
-$num=mysqli_num_rows($result);
+require 'student_id.php';
 
-while ($query_row=mysqli_fetch_assoc($result))
-{
-
-
-$i=$query_row['ip_address'];
-
-if($Ip==$i)
-{
-	$a=$query_row['computer_system'];
-$s=$query_row['student_id'];
-$i=$query_row['ip_address'];
-$k++;
-break;
-}
-}
 	//student id close
-$query3="SELECT permi FROM student_details WHERE student_id='$s'";
+$query3="SELECT permi,student_name FROM student_details WHERE student_id='$s'";
 $result3=mysqli_query($conn,$query3);
 $query_row3=mysqli_fetch_assoc($result3);
 $permission=$query_row3['permi'];
+$name=$query_row3['student_name'];
+
 if($permission=="Yes")
 {
 $count=0;
@@ -52,6 +35,17 @@ if($result2)
 }
 else{
 	header('Location:error3.php');
+}
+
+if($count>0)
+{
+
+	$query4="INSERT INTO ranking (sid,marks,name) VALUES ('$s','$count','$name')";
+	$result4=mysqli_query($conn,$query4);
+	if($result4)
+	{
+		echo "";
+	}
 }
 ?>
 <!DOCTYPE html>

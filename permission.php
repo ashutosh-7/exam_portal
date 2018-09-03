@@ -3,14 +3,19 @@ require 'configure.php';
 session_start();
 
 $Ip=$_SERVER['REMOTE_ADDR'];
-if($Ip=="::1"){
-	if($_SESSION['username'])
+$Ip2="::1";
+if($Ip!=$Ip2)
+{
+	header('location:error.php');
+}
+if(isset($_SESSION['username']))
 {
 	echo "";
 }
-}
 else{
-	header('Location:error.php');}
+		header('location:error.php');
+
+}
 
 
 
