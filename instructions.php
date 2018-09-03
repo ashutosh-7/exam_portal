@@ -1,5 +1,12 @@
 <?php
 require 'configure.php';
+session_start();
+if(isset($_SESSION['home'])){
+}
+else{
+	header('Location:error3.php');
+
+}
 
 
 
@@ -113,7 +120,7 @@ No deduction for wrong answer.<br>
 		
 	</table>
 	</table>
-	<form action="instructions.php" method="POST"><button class="button" name="button"> <a href="questions.php"> Start Exam </a></button></form>
+	<form action="instructions.php" method="POST"><button  type="" class="button" name="button">  Start Exam</button></form>
 
 
 </div>
@@ -121,11 +128,14 @@ No deduction for wrong answer.<br>
 </body>
 </html>
 <?php
-session_start();
+
+
 if(isset($_POST['button'])){
+
 	
 $_SESSION['q']=1;
 header('Location:questions.php');}
+
 
 
 

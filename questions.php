@@ -2,7 +2,16 @@
 require 'configure.php';
 
 ob_start();
+
+
+
 session_start();
+if(isset($_SESSION['home'])){  }
+    else {
+    	header('Location:error3.php');
+    }
+
+
 
 
 
@@ -20,8 +29,6 @@ if($q<=0)
 else{
 	echo "seesion expire";
 }
-
-
 
 ?>
 
@@ -70,7 +77,8 @@ button:hover {
 #demo{
 	color: #b34700;
 	font-size: 35px;
-	margin-left: 80vw;
+	margin-left: 35px;
+
 }
 .table2{
 	float: right;
@@ -111,7 +119,7 @@ button:hover {
 <body>
 	<script>
 
-var countDownDate = new Date("Aug 31,2018 22:56:10").getTime();
+var countDownDate = new Date("Sep 3,2018 11:15:10").getTime();
 
 
 var x = setInterval(function() {
@@ -133,7 +141,7 @@ var x = setInterval(function() {
     
    
     if (distance <0) {
-        window.location.href="error3.php";
+        //window.location.href="error3.php";
         
     }
    
@@ -143,44 +151,43 @@ var x = setInterval(function() {
 		<h1 id="msg"><u>Open Source Software R&D Centre Exam</u></h1>
 	</div>
 		
-			<!--<div id="demo"></div>-->
 			<div>
 			<table border="1" style="float: left" class="table1">
 				<tr><td>		<form action="questions.php" method="POST">
-<button type="submit" name="que1">1</button></form></td>
+<button type="submit" name="que1" id="1">1</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que2">2</button></form></td>
+<button type="submit" name="que2" id="2">2</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que3">3</button></form></td>
+<button type="submit" name="que3" id="3">3</button></form></td>
 				</tr>
 				<tr><td><form action="questions.php" method="POST">
-<button type="submit" name="que4">4</button></form></td>
+<button type="submit" name="que4" id="4">4</button></form></td>
 				
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que5">5</button></form></td>
+<button type="submit" name="que5" id="5">5</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que6">6</button></form></td>
+<button type="submit" name="que6" id="6">6</button></form></td>
 				</tr>
 				<tr><td><form action="questions.php" method="POST">
-<button type="submit" name="que7">7</button></form></td>
+<button type="submit" name="que7" id="7">7</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que8">8</button></form></td>
+<button type="submit" name="que8" id="8">8</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que9">9</button></form></td>
+<button type="submit" name="que9" id="9">9</button></form></td>
 				</tr>
 				<tr><td><form action="questions.php" method="POST">
-<button type="submit" name="que10">10</button></form></td>
+<button type="submit" name="que10" id="10">10</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que11">11</button></form></td>
+<button type="submit" name="que11" id="11">11</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que12">12</button></form></td>
+<button type="submit" name="que12" id="12">12</button></form></td>
 				</tr>
 				<tr><td><form action="questions.php" method="POST">
-<button type="submit" name="que13">13</button></form></td>
+<button type="submit" name="que13" id="13">13</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que14">14</button></form></td>
+<button type="submit" name="que14" id="14">14</button></form></td>
                  <td><form action="questions.php" method="POST">
-<button type="submit" name="que15">15</button></form></td>
+<button type="submit" name="que15" id="15">15</button></form></td>
 				</tr>
 			</table>
 			</div>
@@ -190,9 +197,42 @@ var x = setInterval(function() {
 
 	
 	<?php 
+//student id
+$Ip=$_SERVER['REMOTE_ADDR'];
+$k=0;
+$query="SELECT * FROM  allocation ";
+$result=mysqli_query($conn,$query);
+$num=mysqli_num_rows($result);
+
+while ($query_row=mysqli_fetch_assoc($result))
+{
+
+
+$i=$query_row['ip_address'];
+
+if($Ip==$i)
+{
+	$a=$query_row['computer_system'];
+$s=$query_row['student_id'];
+$i=$query_row['ip_address'];
+$k++;
+break;
+}
+}
+$Ip=$_SERVER['REMOTE_ADDR'];
+$query="SELECT student_name,student_id,email,mobile,branch,section FROM  student_details WHERE student_id=$s";
+$result=mysqli_query($conn,$query);
+$query_row=mysqli_fetch_assoc($result);
+$i=$query_row['student_id'];
+	//student id close
+
+
+
+
   $query="SELECT * FROM  questions WHERE qid=$q ";
 $result=mysqli_query($conn,$query);
 $query_row=mysqli_fetch_assoc($result);
+$ans=0;
 	
 
 	//echo"<table border=1 class=table2>";
@@ -215,7 +255,33 @@ $query_row=mysqli_fetch_assoc($result);
 
 //echo"</table>";
 
+    	if(isset($_POST['submit']))
+    	{
+
+$ans=$_POST['opt'];
+echo "";
+}
+
+if($ans!=0){
+
+	$query="SELECT * FROM  answer WHERE qid='$q' AND sid='$i' ";
+$result=mysqli_query($conn,$query);
+if(mysqli_num_rows($result))
+{$query_row=mysqli_fetch_assoc($result);
+	$tr=$query_row['ans'];
+	echo $tr;
+	
+$query="DELETE FROM answer WHERE qid='$q' AND sid='$i'";
+if($result=mysqli_query($conn,$query))
+echo "";}
+$query="INSERT INTO answer (qid, sid,ans) VALUES ('$q','$i','$ans')"; 
+$result=mysqli_query($conn,$query);
+		if($result)
+			echo "";}
+
+  
 ?>
+
 </table>
 
 
@@ -229,12 +295,16 @@ $query_row=mysqli_fetch_assoc($result);
 	<input id="next"  type="submit" name="Next" value="Next">
 
 </form>
+	
 
 	</div>
+<div id="demo"></div>
 
 </body>
 </html>
 <?php
+//next button nkjkjkk
+
 if(isset($_POST['Next'])){
 
 	session_start();
@@ -250,6 +320,7 @@ else{
 }
 header('Location:questions.php');
 }
+//previous buttons
 if(isset($_POST['Previous'])){
 
 session_start();
@@ -257,6 +328,8 @@ if(isset($_SESSION['q']))
 $x=$_SESSION['q']-1;
 $_SESSION['q']=$x;
 header('Location:questions.php');}
+
+//question button
 if(isset($_POST['que1'])) 
 {
 	$_SESSION['q']=1;
@@ -320,22 +393,21 @@ if(isset($_POST['que4']))
 	$_SESSION['q']=15;
 	header('Location:questions.php');}
 
+$query="SELECT * FROM answer WHERE sid='$i'";
+$result=mysqli_query($conn,$query);
+if($result)
+{
+	while($query_row=mysqli_fetch_assoc($result))
+	{
+		$qn=$query_row['qid'];
 
+		
+			echo"<script>
+			var x= $qn;
+			document.getElementById(x).style.background='green';
+			</script>";
+		
 
-
-
-
-
-
-
-
-
-
-
-  //submit button press ho gaya
-
-
-
-
-
+	}
+}
 ?>

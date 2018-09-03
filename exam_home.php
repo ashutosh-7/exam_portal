@@ -1,5 +1,8 @@
 <?php
 require 'configure.php';
+session_start();
+$_SESSION['home']=2;
+
 $Ip=$_SERVER['REMOTE_ADDR'];
 $k=0;
 $query="SELECT * FROM  allocation ";
@@ -36,6 +39,8 @@ $result=mysqli_query($conn,$query);
 $query_row=mysqli_fetch_assoc($result);
 $n=$query_row['student_name'];
 $i=$query_row['student_id'];
+$_SESSION['sid']=$i;
+
 $m=$query_row['mobile'];
 $b=$query_row['branch'];
 $s=$query_row['section'];
