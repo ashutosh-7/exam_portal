@@ -22,7 +22,7 @@ else{
 	<title>admin panel</title>
 	<style type="text/css">
 		body{
-			background: grey;
+			background:  #00e6e6;
 		}
 		.logout{
 			float: right;

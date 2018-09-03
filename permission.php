@@ -24,7 +24,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fetch</title>
+	<title>Permission</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
@@ -39,6 +39,9 @@ else{
     padding: 8px;
     cursor: pointer;
    
+		}
+		body{
+			background: #00997a;
 		}
 		</style>
 </head>
