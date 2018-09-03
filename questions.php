@@ -112,14 +112,15 @@ button:hover {
 	}	
 	.table1{
 		width: 23%;
-	}	</style>
+	}
+		</style>
 
 
 </head>
 <body>
 	<script>
 
-var countDownDate = new Date("Sep 3,2018 11:15:10").getTime();
+var countDownDate = new Date("Sep 3,2018 15:55:10").getTime();
 
 
 var x = setInterval(function() {
@@ -250,16 +251,25 @@ $ans=0;
     echo"<tr><td><input type=radio name =opt value=4 id =d4>" .$query_row['option4'];
     	echo"</tr></td>";
 
-    echo"<tr><td><br><input type=submit name=submit value=submit></br>";
+    echo"<tr><td><br><input type=submit name=submit value=submit>&nbsp &nbsp &nbsp &nbsp";
+
+        echo"<input type=submit name=remove class=remove value=remove-answer></br>";
+
     	echo"</tr></td>";
 
 //echo"</table>";
 
     	if(isset($_POST['submit']))
     	{
+if(isset($_POST['opt']))
+{
 
 $ans=$_POST['opt'];
 echo "";
+}
+else{
+	echo "";
+}
 }
 
 if($ans!=0){
@@ -268,9 +278,6 @@ if($ans!=0){
 $result=mysqli_query($conn,$query);
 if(mysqli_num_rows($result))
 {$query_row=mysqli_fetch_assoc($result);
-	$tr=$query_row['ans'];
-	echo $tr;
-	
 $query="DELETE FROM answer WHERE qid='$q' AND sid='$i'";
 if($result=mysqli_query($conn,$query))
 echo "";}
@@ -279,7 +286,19 @@ $result=mysqli_query($conn,$query);
 		if($result)
 			echo "";}
 
+    	if(isset($_POST['remove']))
+    	{
+$query="SELECT * FROM  answer WHERE qid='$q' AND sid='$i' ";
+$result=mysqli_query($conn,$query);
+if(mysqli_num_rows($result))
+{
+	
+$query="DELETE FROM answer WHERE qid='$q' AND sid='$i'";
+if($result=mysqli_query($conn,$query))
+echo "";}
+}
   
+ 
 ?>
 
 </table>
@@ -293,6 +312,8 @@ $result=mysqli_query($conn,$query);
 			<input id="previous" type="submit" name="Previous" value="Previous">
 
 	<input id="next"  type="submit" name="Next" value="Next">
+		<input id="next"  type="submit" name="exam" value="Submit-Exam">
+
 
 </form>
 	
@@ -328,6 +349,11 @@ if(isset($_SESSION['q']))
 $x=$_SESSION['q']-1;
 $_SESSION['q']=$x;
 header('Location:questions.php');}
+//exam over button
+if(isset($_POST['exam'])){
+header('location:error3.php');
+}
+
 
 //question button
 if(isset($_POST['que1'])) 
@@ -409,5 +435,24 @@ if($result)
 		
 
 	}
+}
+ $query="SELECT * FROM  answer WHERE qid='$q' AND sid='$i' ";
+$result=mysqli_query($conn,$query);
+if(mysqli_num_rows($result))
+{$query_row=mysqli_fetch_assoc($result);
+	$tr=$query_row['ans'];
+
+	echo" <script>
+    var x = $tr;
+    if(x==1)
+    {document.getElementById('d1').checked=true;}
+    if(x==2)
+    {document.getElementById('d2').checked=true;}
+    if(x==3)
+    {document.getElementById('d3').checked=true;}
+    if(x==4)
+    {document.getElementById('d4').checked=true;}
+    </script>
+";
 }
 ?>

@@ -3,6 +3,7 @@ require 'configure.php';
 session_start();
 session_destroy();
 
+require 'result.php';
 ?>
 <!DOCTYPE html>
 <html>
