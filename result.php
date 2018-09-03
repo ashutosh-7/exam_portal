@@ -3,7 +3,7 @@ require 'configure.php';
 require 'ip-secure.php';
 //student id
 $Ip=$_SERVER['REMOTE_ADDR'];
-$k=0;
+$k=0; 
 $query="SELECT * FROM  allocation ";
 $result=mysqli_query($conn,$query);
 $num=mysqli_num_rows($result);
@@ -24,7 +24,12 @@ break;
 }
 }
 	//student id close
-
+$query3="SELECT permi FROM student_details WHERE student_id='$s'";
+$result3=mysqli_query($conn,$query3);
+$query_row3=mysqli_fetch_assoc($result3);
+$permission=$query_row3['permi'];
+if($permission=="Yes")
+{
 $count=0;
 $query="SELECT * from answer WHERE sid='$s'";
 $result=mysqli_query($conn,$query);
@@ -43,6 +48,10 @@ if($result2)
 		$count++;
 	}
 }
+}
+}
+else{
+	header('Location:error3.php');
 }
 ?>
 <!DOCTYPE html>
@@ -69,11 +78,6 @@ if($result2)
 
 </body>
 </html>
-
-
-
-
-
 
 
 
