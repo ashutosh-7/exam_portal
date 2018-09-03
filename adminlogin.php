@@ -1,6 +1,5 @@
 <?php
 require 'configure.php';
-session_start();
 $Ip=$_SERVER['REMOTE_ADDR'];
 if($Ip=="::1"){
 
@@ -41,6 +40,7 @@ if($Ip=="::1"){
 </html>
 <?php
 
+session_start();
 
 
 if(isset($_POST['login']))

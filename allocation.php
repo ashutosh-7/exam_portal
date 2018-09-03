@@ -7,7 +7,7 @@ if($Ip!=$Ip2)
 {
 	header('location:error.php');
 }
-if($_SESSION['username'])
+if(isset($_SESSION['username']))
 {
 	echo "";
 }
@@ -43,6 +43,9 @@ else{
     padding: 8px;
     cursor: pointer;
    
+		}
+		a{
+			text-decoration: none;
 		}
 
 

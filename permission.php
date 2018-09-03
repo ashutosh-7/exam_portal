@@ -1,16 +1,17 @@
 <?php
 require 'configure.php';
 session_start();
-if($_SESSION['username'])
-{
+
 $Ip=$_SERVER['REMOTE_ADDR'];
 if($Ip=="::1"){
+	if($_SESSION['username'])
+{
 	echo "";
 }
 }
 else{
-	echo "<h1>login first</h1>";
-}
+	header('Location:error.php');}
+
 
 
 
@@ -51,7 +52,7 @@ else{
 <?php
 if(isset($_POST['submit']))   //submit button press ho gaya
 {
-	session_start();
+	
 
         	
 	$s=$_POST['student_id'];

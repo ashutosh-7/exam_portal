@@ -1,15 +1,19 @@
 <?php
 require 'configure.php';
 session_start();
-if($_SESSION['username'])
-{
 $Ip=$_SERVER['REMOTE_ADDR'];
-if($Ip=="::1"){
+$Ip2="::1";
+if($Ip!=$Ip2)
+{
+	header('location:error.php');
+}
+if(isset($_SESSION['username']))
+{
 	echo "";
 }
-}
 else{
-	echo "<h1>login first</h1>";
+		header('location:error.php');
+
 }
 ?>
 <!DOCTYPE html>
@@ -64,6 +68,7 @@ else{
 			<tr><td><a href="editdetails.php">Edit Student Details</a></td></tr>
 			<tr><td><a href="permission.php">Permission</a></td></tr>
 			<tr><td><a href="editquestion.php">Edit Question</a></td></tr>
+			<tr><td><a href="leaderboard.php">Leaderboard</a></td></tr>
 		</table>
 	</div>
 
