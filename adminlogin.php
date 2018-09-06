@@ -1,7 +1,8 @@
 <?php
 require 'configure.php';
 $Ip=$_SERVER['REMOTE_ADDR'];
-if($Ip=="::1"){
+if($Ip=="::1")//admin ip
+{
 
 	}else{
 			header('Location:error.php');

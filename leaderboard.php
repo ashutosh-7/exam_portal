@@ -41,7 +41,7 @@ require 'configure.php';
 session_start();
 
 $Ip=$_SERVER['REMOTE_ADDR'];
-$Ip2="::1";
+$Ip2="::1";//admin ip
 if($Ip!=$Ip2)
 {
 	header('location:error.php');

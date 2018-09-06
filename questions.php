@@ -120,7 +120,7 @@ button:hover {
 <body>
 	<script>
 
-var countDownDate = new Date("Sep 3,2018 15:55:10").getTime();
+var countDownDate = new Date("Sep 4,2018 05:19:10").getTime();
 
 
 var x = setInterval(function() {

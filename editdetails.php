@@ -3,7 +3,7 @@ require 'configure.php';
 session_start();
 
 $Ip=$_SERVER['REMOTE_ADDR'];
-$Ip2="::1";
+$Ip2="::1";//admin ip
 if($Ip!=$Ip2)
 {
 	header('location:error.php');
@@ -53,7 +53,7 @@ if(isset($_POST['submit']))   //submit button press ho gaya
 	$_SESSION['st']=$s;
 
 
-$query="SELECT student_name,email,mobile,branch,section,gender,year FROM  student_details WHERE student_id=$s";
+$query="SELECT student_name,email,mobile,branch,section,gender,year FROM  student_details WHERE student_id='$s'";
 $result=mysqli_query($conn,$query);
 $row=mysqli_num_rows($result);
 $query_row=mysqli_fetch_assoc($result);
